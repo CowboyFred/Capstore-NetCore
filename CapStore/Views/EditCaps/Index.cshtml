@@ -1,0 +1,129 @@
+﻿@using CapStore.Models
+@using System.Web
+@model CapStore.Models.CapsListViewModel
+@{
+    ViewBag.Title = "Caps list";
+}
+
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <h1>List of caps</h1>
+            <form method="get">
+                <div class="form-inline form-group">
+                    <label class="control-label">Name: </label>
+                    @Html.TextBox("name", Model.Name, htmlAttributes: new { @class = "form-control" })
+
+                    <label class="control-label">Category: </label>
+                    @Html.DropDownList("category", Model.Categories as SelectList,
+                                                 htmlAttributes: new { @class = "form-control" })
+
+                    <label class="control-label">Supplier: </label>
+                    @Html.DropDownList("supplier", Model.Suppliers as SelectList,
+                                                 htmlAttributes: new { @class = "form-control" })
+
+                    <input type="submit" value="Filter" class="btn btn-default" />
+                </div>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewBag.NameSort"
+                           asp-route-name="@ViewData["CurrentName"]"
+                           asp-route-category="@ViewData["CurrentCategory"]"
+                           asp-route-supplier="@ViewData["CurrentSupplier"]">Cap Name</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewBag.CatSort"
+                           asp-route-name="@ViewData["CurrentName"]"
+                           asp-route-category="@ViewData["CurrentCategory"]"
+                           asp-route-supplier="@ViewData["CurrentSupplier"]">Category</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewBag.SupSort"
+                           asp-route-name="@ViewData["CurrentName"]"
+                           asp-route-category="@ViewData["CurrentCategory"]"
+                           asp-route-supplier="@ViewData["CurrentSupplier"]">Supplier</a>
+                    </th>
+                    <th>Description</th>
+                    <th>Availibility</th>
+                    <th>Image</th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSort"
+                           asp-route-name="@ViewData["CurrentName"]"
+                           asp-route-category="@ViewData["CurrentCategory"]"
+                           asp-route-supplier="@ViewData["CurrentSupplier"]">Price</a>
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (Cap cap in Model.Caps)
+                {
+                <tr>
+                    <td>@cap.Id</td>
+                    <td>@cap.Name</td>
+                    <td>@cap.Category.Name</td>
+                    <td>@cap.Supplier.Name</td>
+                    <td>@cap.Description</td>
+                    @if (cap.Visible == true)
+    {
+                <td>In stock</td>
+}
+else
+{
+                <td>Not availible</td>
+}
+                    @if (cap.HasImage())
+    {
+                <td><img src="@Url.Content(cap.Image)" height=100 width=100 /></td>
+}
+else
+{
+                <td>No image availible</td>
+}
+                    <td>$@cap.Price</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="EditCaps" asp-route-id="@cap.Id">Edit</a> |
+                        <a asp-action="Delete" asp-controller="EditCaps" asp-route-id="@cap.Id">Delete</a>
+                    </td>
+                </tr>
+                }
+            </table>
+            <a asp-action="Create" class="btn btn-sm btn-primary">Add a new cap</a>
+            <br />
+            <br />
+            <div>
+                @if (Model.PageViewModel.HasPreviousPage)
+                {
+                    <a asp-action="Index"
+                       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                       asp-route-name="@ViewData["CurrentName"]"
+                       asp-route-category="@ViewData["CurrentCategory"]"
+                       asp-route-supplier="@ViewData["CurrentSupplier"]"
+                       class="btn btn-default btn">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Back
+                    </a>
+                }
+                @if (Model.PageViewModel.HasNextPage)
+                {
+                    <a asp-action="Index"
+                       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                       asp-route-name="@ViewData["CurrentName"]"
+                       asp-route-category="@ViewData["CurrentCategory"]"
+                       asp-route-supplier="@ViewData["CurrentSupplier"]"
+                       class="btn btn-default btn">
+                        Forward
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </a>
+                }
+            </div>
+            </div>
+</div>
+</div>

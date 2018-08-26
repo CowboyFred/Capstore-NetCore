@@ -1,0 +1,115 @@
+﻿@using CapStore.Models
+@model Cap
+@{
+    ViewBag.Title = "Product details - ";
+}
+
+<!DOCTYPE html>
+<head>
+    <!-- Bootstrap Slider-->
+    <link rel="stylesheet" href="~/css/bootstrap-slider.min.css">
+</head>
+<html>
+<body>
+
+
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="active"><a asp-controller="Store" asp-action="Index">Store</a></li>
+                        <li><a asp-controller="Cart" asp-action="Index">Cart</a></li>
+                        <li><a asp-controller="Order" asp-action="Index">My Orders</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
+
+
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Shop</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="product-content-right">
+                        <div class="product-breadcroumb">
+                            <a asp-controller="Store" asp-action="Index">Back to store</a>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="product-images">
+                                    @if (Model.HasImage())
+    {<div class="product-main-img">
+    <img src="@Url.Content(Model.Image)" alt="">
+</div>
+}
+                                    
+
+                                </div>
+                                </div>
+                            
+
+                            <div class="col-sm-6">
+                                <div class="product-inner">
+                                    <h2 class="product-name">@Model.Name</h2>
+                                    <div class="product-inner-price">
+                                        <ins>@Model.Price.ToString("C2")</ins>
+                                    </div>
+
+                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-capId="@Model.Id" class="add_to_cart_button">Add to cart</a>
+                                    <br />
+                                    <br />
+                                    <div class="product-inner-category">
+                                        <p>Category: <a href="">@Model.Category.Name</a></p>
+                                    </div>
+
+                                    <div role="tabpanel">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                                <h2>Product Description</h2>
+                                                <p>@Model.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+   
+    <!-- Bootstrap slider -->
+    <script src="~/js/bootstrap-slider.min.js"></script>
+    <script>var slider = new Slider('#slider', {});</script>
+</body>
+</html>
+

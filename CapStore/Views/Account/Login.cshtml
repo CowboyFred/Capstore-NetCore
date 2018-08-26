@@ -1,0 +1,37 @@
+﻿@model CapStore.ViewModels.LoginViewModel
+
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                <h2 class="sidebar-title">Enter the store, before start making orders</h2>
+                <form method="post" asp-controller="Account" asp-action="Login"
+                      asp-route-returnUrl="@Model.ReturnUrl">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div>
+                        <label asp-for="Email"></label><br />
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <br />
+                    <div>
+                        <label asp-for="Password"></label><br />
+                        <input asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <br />
+                    <div>
+                        <label asp-for="RememberMe"></label>
+                        &ensp;
+                        <input asp-for="RememberMe" />
+                    </div>
+                    <br />
+                    <div>
+                        <input type="submit" value="Log In" />
+                    </div>
+                    <br />
+                </form>
+                </div>
+                </div>
+</div>
+</div>

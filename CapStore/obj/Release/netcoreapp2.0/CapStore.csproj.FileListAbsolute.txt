@@ -1,0 +1,11 @@
+C:\study\dotNET\CapStore\CapStore\CapStore\obj\Release\netcoreapp2.0\CapStore.csprojResolveAssemblyReference.cache
+C:\study\dotNET\CapStore\CapStore\CapStore\obj\Release\netcoreapp2.0\CapStore.csproj.CoreCompileInputs.cache
+C:\study\dotNET\CapStore\CapStore\CapStore\obj\Release\netcoreapp2.0\CapStore.AssemblyInfoInputs.cache
+C:\study\dotNET\CapStore\CapStore\CapStore\obj\Release\netcoreapp2.0\CapStore.AssemblyInfo.cs
+C:\study\dotNET\CapStore\CapStore\CapStore\bin\Release\netcoreapp2.0\CapStore.deps.json
+C:\study\dotNET\CapStore\CapStore\CapStore\bin\Release\netcoreapp2.0\CapStore.runtimeconfig.json
+C:\study\dotNET\CapStore\CapStore\CapStore\bin\Release\netcoreapp2.0\CapStore.runtimeconfig.dev.json
+C:\study\dotNET\CapStore\CapStore\CapStore\bin\Release\netcoreapp2.0\CapStore.dll
+C:\study\dotNET\CapStore\CapStore\CapStore\bin\Release\netcoreapp2.0\CapStore.pdb
+C:\study\dotNET\CapStore\CapStore\CapStore\obj\Release\netcoreapp2.0\CapStore.dll
+C:\study\dotNET\CapStore\CapStore\CapStore\obj\Release\netcoreapp2.0\CapStore.pdb

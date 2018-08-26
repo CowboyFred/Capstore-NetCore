@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Thank you";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="Store" asp-action="Index">Store</a></li>
+                        <li><a asp-controller="Cart" asp-action="Index">Cart</a></li>
+                        <li class="active"><a asp-controller="Order" asp-action="Index">My Orders</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
+
+                <div class="single-product-area">
+                    <div class="zigzag-bottom"></div>
+                    <div class="container">
+                        <div class="col-md-12">
+                                <h1>
+                                    @ViewBag.CheckoutCompleteMessage
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+</body>
+</html>

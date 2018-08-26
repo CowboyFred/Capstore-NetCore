@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapStore", "CapStore\CapStore.csproj", "{4339759B-2578-40C3-B435-C63011D5C17A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4339759B-2578-40C3-B435-C63011D5C17A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4339759B-2578-40C3-B435-C63011D5C17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4339759B-2578-40C3-B435-C63011D5C17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4339759B-2578-40C3-B435-C63011D5C17A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCB51505-7335-41B7-BC3F-DDEE2465EF0F}
+	EndGlobalSection
+EndGlobal

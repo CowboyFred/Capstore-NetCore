@@ -1,0 +1,53 @@
+﻿@model CapStore.Models.Cap
+@{
+    ViewBag.Title = "Cap deleting";
+}
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <div>
+                <h3>Are you sure want to delete this item?</h3>
+                <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd>
+                        @Html.DisplayFor(Model => Model.Name)
+                    </dd>
+
+                    <dt>Category</dt>
+                    <dd>
+                        @Html.DisplayFor(Model => Model.Category.Name)
+                    </dd>
+
+                    <dt>Supplier</dt>
+                    <dd>
+                        @Html.DisplayFor(Model => Model.Supplier.Name)
+                    </dd>
+
+                    <dt>Description</dt>
+                    <dd>
+                        @Html.DisplayFor(Model => Model.Description)
+                    </dd>
+                    <dt>Image</dt>
+                    @if (Model.HasImage())
+                    {
+                        <dd><img src="@Url.Content(Model.Image)" height=300 width=300 /></dd>
+                    }
+                    else
+                    {
+                        <dd>No image availible</dd>
+                    }
+
+
+                </dl>
+
+                <div>
+                    <form asp-controller="EditCaps" asp-action="Delete" method="post">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default" value="Delete" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+</div>
+</div>

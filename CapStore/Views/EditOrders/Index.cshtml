@@ -1,0 +1,85 @@
+﻿@using CapStore.Models
+@using System.Web
+@model CapStore.Models.OrdersViewModel
+@{
+    ViewBag.Title = "Caps list";
+}
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <h1>List of orders</h1>
+            <form method="get">
+                <div class="form-inline form-group">
+                    <label class="control-label">Customer Name: </label>
+                    @Html.TextBox("name", Model.Name, htmlAttributes: new { @class = "form-control" })
+                    <input type="submit" value="Filter" class="btn btn-default" />
+                </div>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>Order no.</th>
+                    <th>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewBag.UserNameSort"
+                           asp-route-name="@ViewData["CurrentName"]">Customer</a>
+                    </th>
+                    <th>Total cost</th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewBag.DateSort"
+                           asp-route-name="@ViewData["CurrentName"]">Date</a>
+                    </th>
+                    <th>Current Status</th>
+                    <th>Change Status</th>
+                    <th></th>
+                </tr>
+                @foreach (Order order in Model.Orders)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.Customer.UserName</td>
+                        <td>@order.TotalCost</td>
+                        <td>@order.OrderPlaced.ToString("d MMM yyyy")</td>
+                        <td>@order.Status</td>
+                        <td>
+                            <form method="post">
+                                @Html.DropDownList("status", Model.Statuses,
+                                                 htmlAttributes: new { @class = "form-control" })
+                                <br /><button type="submit" asp-route-id="@order.Id" asp-controller="EditOrders" asp-action="ChangeStatus">Change status</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="EditOrders" asp-route-id="@order.Id">See details & Edit</a> |
+                            <a asp-action="Delete" asp-controller="EditOrders" asp-route-id="@order.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <br />
+            <div>
+                @if (Model.PageViewModel.HasPreviousPage)
+                {
+                    <a asp-action="Index"
+                       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                       asp-route-name="@ViewData["CurrentName"]"
+                       class="btn btn-default btn">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Back
+                    </a>
+                }
+                @if (Model.PageViewModel.HasNextPage)
+                {
+                    <a asp-action="Index"
+                       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+                       asp-route-sortOrder="@ViewData["CurrentSort"]"
+                       asp-route-name="@ViewData["CurrentName"]"
+                       class="btn btn-default btn">
+                        Forward
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </a>
+                }
+            </div>
+            </div>
+</div>
+</div>

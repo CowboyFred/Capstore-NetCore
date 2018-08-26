@@ -1,0 +1,24 @@
+﻿@model CartViewModel
+
+
+@if (User.Identity.IsAuthenticated)
+{@if (Model.Cart.CartCaps.Count > 0)
+    {<div class="col-sm-6">
+            <div class="shopping-item">
+                <a asp-controller="Cart" asp-action="Index">Cart - <span class="cart-amunt">@Model.CartTotal.ToString("C2")</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">@Model.Cart.CartCaps.Count</span></a>
+            </div>
+        </div>
+
+
+    }
+    else
+    { <div class="col-sm-6">
+            <div class="shopping-item">
+                <a asp-controller="Cart" asp-action="Index">Cart - <span class="cart-amunt">$0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
+            </div>
+        </div>
+
+
+    }
+
+}

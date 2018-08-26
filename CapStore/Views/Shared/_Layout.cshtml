@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] CapStore</title>
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+
+    <!--
+        <environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>
+         -->
+</head>
+<body>
+
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="user-menu">
+                        <ul>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><p>Hi, @User.Identity.Name |</p></li>
+
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <li class="dropdown dropdown-small">
+                                        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key"><i class="fa fa-gear"></i>Site Management</span><b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-controller="EditOrders" asp-action="Index">Edit Orders</a></li>
+                                            <li><a asp-controller="EditCaps" asp-action="Index">Edit Caps</a></li>
+                                            <li><a asp-controller="EditCategories" asp-action="Index">Edit Categories</a></li>
+                                            <li><a asp-controller="EditSuppliers" asp-action="Index">Edit Suppliers</a></li>
+                                            <li><a asp-controller="Users" asp-action="Index">Edit Customers</a></li>
+                                            <li><a asp-controller="Roles" asp-action="Index">Edit Roles</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li><a asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                                <li>
+                                    <form method="post" asp-controller="Account" asp-action="LogOff" id="logOut"></form>
+                                    <a href=# onclick="document.getElementById('logOut').submit()"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-sign-in" aria-hidden="true"></i>Log In</a></li>
+                                <li><a asp-controller="Account" asp-action="Register"><i class="fa fa-user"></i>Register</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End header area -->
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a asp-controller="Home" asp-action="Index"><img src="~/images/logo.png"></a></h1>
+                    </div>
+                </div>
+                @await Component.InvokeAsync("CartSummary")
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
+
+    @RenderBody()
+    <div class="footer-top-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-about-us">
+                        <h2>Cap<span>Store</span></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                        <div class="footer-social">
+                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> <!-- End footer top area -->
+    <!-- End footer bottom area -->
+    <!-- Latest jQuery form server -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- jQuery sticky menu -->
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+
+    <!-- jQuery easing -->
+    <script src="~/js/jquery.easing.1.3.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="~/js/main.js"></script>
+
+    <!-- Slider -->
+    <script type="text/javascript" src="~/js/bxslider.min.js"></script>
+    <script type="text/javascript" src="~/js/script.slider.js"></script>
+
+    <!--
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+
+        @RenderSection("Scripts", required: false)
+         -->
+</body>
+</html>

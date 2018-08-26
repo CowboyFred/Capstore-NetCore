@@ -1,0 +1,77 @@
+﻿@model CapStore.ViewModels.RegisterViewModel
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2 class="sidebar-title">New customer registration</h2>
+                    <form method="post" asp-controller="Account" asp-action="Register">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div>
+                            <label asp-for="Name"></label><br />
+                            <input asp-for="Name" />
+                            <span asp-validation-for="Name"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="FirstName"></label><br />
+                            <input asp-for="FirstName" />
+                            <span asp-validation-for="FirstName"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="LastName"></label><br />
+                            <input asp-for="LastName" />
+                            <span asp-validation-for="LastName"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="Email"></label><br />
+                            <input asp-for="Email" />
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="Phone"></label><br />
+                            <input asp-for="Phone" />
+                            <span asp-validation-for="Phone"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="HomePhone"></label><br />
+                            <input asp-for="HomePhone" />
+                            <span asp-validation-for="HomePhone"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="WorkPhone"></label><br />
+                            <input asp-for="WorkPhone" />
+                            <span asp-validation-for="WorkPhone"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="Address"></label><br />
+                            <input asp-for="Address" />
+                            <span asp-validation-for="Address"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="Password"></label><br />
+                            <input asp-for="Password" />
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <label asp-for="PasswordConfirm"></label><br />
+                            <input asp-for="PasswordConfirm" />
+                            <span asp-validation-for="PasswordConfirm"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <input type="submit" value="Register" />
+                        </div>
+                        <br />
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>

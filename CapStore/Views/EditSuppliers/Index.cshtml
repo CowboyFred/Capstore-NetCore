@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CapStore.Models.Supplier>
+@{
+    ViewBag.Title = "Suppliers list";
+}
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <tr><th>Supplier Name</th><th>Email</th><th>Contact Phone</th><th>Home Phone</th><th>Work Phone</th><th>Address</th><th></th></tr>
+                @foreach (var supplier in Model)
+                {
+                <tr>
+                    <td>@supplier.Name</td>
+                    <td>@supplier.Email</td>
+                    <td>@supplier.Phone</td>
+                    <td>@supplier.HomePhone</td>
+                    <td>@supplier.WorkPhone</td>
+                    <td>@supplier.Address</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="EditSuppliers" asp-route-id="@supplier.Id">Edit</a> |
+                        <a asp-action="Delete" asp-controller="EditSuppliers" asp-route-id="@supplier.Id">Delete</a>
+                    </td>
+                </tr>
+                }
+            </table>
+            <a asp-action="Create" class="btn btn-sm btn-primary">Add a new supplier</a>
+            </div>
+</div>
+</div>
